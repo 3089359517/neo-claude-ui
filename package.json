@@ -1,0 +1,47 @@
+{
+  "name": "neo-claude-ui",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "copy-assets": "node scripts/copy-assets.mjs"
+  },
+  "dependencies": {
+    "@monaco-editor/react": "^4.7.0",
+    "@tailwindcss/typography": "^0.5.20",
+    "@webcontainer/api": "^1.6.1",
+    "clsx": "^2.1.0",
+    "framer-motion": "^11.0.8",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.4",
+    "lucide-react": "^0.344.0",
+    "prismjs": "^1.30.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-markdown": "^9.1.0",
+    "react-syntax-highlighter": "^16.1.0",
+    "rehype-raw": "^7.0.0",
+    "remark-gfm": "^4.0.1",
+    "streamdown": "^1.6.9",
+    "tailwind-merge": "^2.2.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.17",
+    "@types/react": "^18.2.64",
+    "@types/react-dom": "^18.2.21",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.22",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.17",
+    "vite": "^5.1.4"
+  },
+  "description": "Neo Claude UI — 整合多个 Claude UI 开源项目精华的一体化 AI 工作台：CDS 设计系统 + 多模态聊天 + Artifacts"
+}
