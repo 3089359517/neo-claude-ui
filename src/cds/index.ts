@@ -42,3 +42,8 @@ export * from './useClaudeScrollPinning';
 export * from './ContainerResponsiveBar';
 export * from './useClaudeRovingFocus';
 export * from './useRateLimitBackoff';
+
+// 6. CDS 2.0 Architectural Modules & Reasoning Controls
+export * from './ModelSelectorEffort';
+export * from './ChatComposerChin';
+export * from './CdsMotionEngine';
