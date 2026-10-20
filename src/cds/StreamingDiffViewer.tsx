@@ -6,7 +6,7 @@ import React, { useState, useEffect, useRef, useMemo } from 'react';
  * 
  * 逆向还原自官方 Claude Epitaxy 代码差异对比与流式高亮引擎:
  * - `c19e90103-CvUj-0ZH.js` (Jh / Xh / vh / epitaxy-diff / epitaxy-codeblock)
- * - `c6a992d55-C0zTICcS.css` (--diffs-addition / --diffs-deletion / saved-check-decay)
+ * - `c6a992d55-sXiDGMFQ.css` (--diffs-addition / --diffs-deletion / saved-check-decay)
  * - `tree-sitter-Tbdz49RR.js` (incremental parser tokens)
  * 
  * 核心工程机制:
@@ -51,15 +51,33 @@ export function parseGitDiff(rawDiff: string): DiffLine[] {
   const result: DiffLine[] = [];
   let oldLine = 1;
   let newLine = 1;
+  let inHunk = false;
 
   for (const line of lines) {
+    // 遇到新的文件变更头，重置 hunk 状态
+    if (line.startsWith('diff --git')) {
+      inHunk = false;
+      continue;
+    }
+
     if (line.startsWith('@@')) {
+      inHunk = true;
       // 解析 @@ -1,5 +1,6 @@ 类似头信息
       const match = line.match(/@@ -(\d+)(?:,\d+)? \+(\d+)(?:,\d+)? @@/);
       if (match) {
         oldLine = parseInt(match[1], 10);
         newLine = parseInt(match[2], 10);
       }
+      continue;
+    }
+
+    // 忽略处于 hunk 之前的 Git 头部元数据 (如 ---, +++, index, mode 等)
+    if (!inHunk) {
+      continue;
+    }
+
+    // 忽略 Git 文件末尾无换行符指示标记
+    if (line.startsWith('\\ No newline')) {
       continue;
     }
 
